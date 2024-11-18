@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册 - 南宁横州市</title>
+</head>
+<body>
+    <section class="register-form">
+        <h2>创建一个新账户</h2>
+        <form id="registerForm">
+            <label for="newUsername">用户名</label>
+            <input type="text" id="newUsername" name="newUsername" required placeholder="请输入用户名">
+
+            <label for="newPassword">密码</label>
+            <input type="password" id="newPassword" name="newPassword" required placeholder="请输入密码">
+
+            <label for="confirmPassword">确认密码</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="请确认密码">
+
+            <button type="submit">注册</button>
+        </form>
+        <p class="login-link">已有账户？<a href="login.html">点击登录</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 南宁横州市旅游网站</p>
+    </footer>
+
+    <script>
+        // 注册表单验证
+        document.getElementById('registerForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // 阻止表单默认提交
+            
+            const newUsername = document.getElementById('newUsername').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (newUsername === "" || newPassword === "" || confirmPassword === "") {
+                alert("所有字段都是必填项！");
+                return;
+            } 
+            
+            if (newPassword !== confirmPassword) {
+                alert("两次输入的密码不一致！");
+                return;
+            }
+
+            // 获取现有用户数据
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+
+            // 检查用户名是否已存在
+            if (users.some(user => user.username === newUsername)) {
+                alert("该用户名已被注册！");
+                return;
+            }
+
+            // 添加新用户
+            users.push({
+                username: newUsername,
+                password: newPassword
+            });
+
+            // 保存更新后的用户数据
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            alert("注册成功！即将跳转到登录页面。");
+            window.location.href = "login.html";
+        });
+    </script>
+</body>
+</html>
+
+<style>
+    /* 全局样式 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('https://img1.pconline.com.cn/piclib/200906/09/batch/1/34797/1244512002916phjm5dpgjl.jpg');
+    background-size: cover; /* 使背景图片覆盖整个页面 */
+    background-position: center; /* 背景图片居中显示 */
+    background-repeat: no-repeat; /* 防止图片重复 */
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+/* 表单容器样式 */
+.register-form {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* 页面标题 */
+h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* 表单字段标签 */
+label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+/* 输入框样式 */
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* 输入框聚焦时的样式 */
+input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
+    outline: none;
+}
+
+/* 注册按钮样式 */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* 登录链接样式 */
+.login-link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.login-link a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* 页脚样式 */
+footer {
+    position: fixed;
+    bottom: 10px;
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+    color: #e83c0c;
+}
+
+footer p {
+    margin: 0;
+}
+
+</style>

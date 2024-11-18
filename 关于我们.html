@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>关于我们 - 横州市介绍网站</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="preconnect" href="https://webapi.amap.com">
+    <link rel="preconnect" href="https://restapi.amap.com">
+    <link rel="dns-prefetch" href="https://webapi.amap.com">
+    <link rel="dns-prefetch" href="https://restapi.amap.com">
+    <script type="text/javascript">
+        window._AMapSecurityConfig = {
+            securityJsCode:'828d56dc30df4b2b6fbf83356b8c2477',   // 将这里替换为您的安全密钥
+        }
+    </script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=828d56dc30df4b2b6fbf83356b8c2477"></script>  <!-- 将这里替换为您的 Key -->
+    <style>
+        /* 重置默认样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 设置全局字体 */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #f4f4f4;
+        }
+
+        /* 导航栏样式 */
+        header {
+            position: fixed;
+            background-color: #0ec223;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(59, 222, 34, 0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            padding: 15px 0;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 15px;
+            display: block;
+            transition: background-color 0.3s ease, transform 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover {
+            background-color: #575757;
+            border-radius: 5px;
+            transform: scale(1.05);
+        }
+
+        /* 主要内容 */
+        main {
+            max-width: 1200px;
+            margin: 80px auto 30px;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        p, ul {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        /* 链接样式 */
+        a {
+            color: #0ec223;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #0b9b1c;
+        }
+
+        /* 页脚样式 */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #4CAF50, transparent);
+            animation: slideLine 3s linear infinite;
+        }
+
+        footer p {
+            margin-top: 10px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            main {
+                margin: 60px 15px 20px;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+        }
+
+        /* 添加新的样式 */
+        .about-us {
+            display: grid;
+            gap: 30px;
+        }
+
+        .about-us h2 {
+            margin-top: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4CAF50;
+        }
+
+        .about-us ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        .about-us ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .about-us ul li:before {
+            content: "•";
+            color: #4CAF50;
+            font-size: 1.5em;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        .about-us ul li:hover {
+            transform: translateX(10px);
+            padding-left: 30px;
+        }
+
+        /* 联系方式样式优化 */
+        .contact-info {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-info:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 页面加载动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 内容区块动画 */
+        .about-us > * {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .about-us h1 { animation-delay: 0.2s; }
+        .about-us > p { animation-delay: 0.4s; }
+        .about-us h2 { animation-delay: 0.6s; }
+        .about-us ul { animation-delay: 0.8s; }
+        .contact-info { animation-delay: 1s; }
+
+        /* 添加脉冲动画效果给邮箱链接 */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .contact-info a {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            animation: pulse 1s infinite;
+        }
+
+        /* 页脚动画效果 */
+        footer {
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #4CAF50, transparent);
+            animation: slideLine 3s linear infinite;
+        }
+
+        @keyframes slideLine {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* 引入 Font Awesome 图标 */
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+        /* 英雄区域样式 */
+        .hero-section {
+            position: relative;
+            padding: 100px 0;
+            background-attachment: fixed;
+            background-image: linear-gradient(45deg, rgba(14, 194, 35, 0.1), rgba(76, 175, 80, 0.2));
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+        }
+
+        .hero-section .subtitle {
+            font-size: 1.2em;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        /* 介绍卡片样式 */
+        .intro-card {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .intro-card i {
+            font-size: 2em;
+            color: #0ec223;
+            margin-bottom: 20px;
+        }
+
+        /* 使命区域样式 */
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .mission-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .mission-card i {
+            font-size: 2em;
+            color: #0ec223;
+            margin-bottom: 20px;
+        }
+
+        /* 团队成员样式 */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .team-member {
+            position: relative;
+            padding: 20px;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 20px 40px rgba(14, 194, 35, 0.2);
+        }
+
+        .member-avatar {
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .member-avatar::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 2px dashed #0ec223;
+            border-radius: 50%;
+            opacity: 0;
+            transform: scale(1.2);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover .member-avatar::after {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .member-avatar {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            border-radius: 50%;
+            border: 3px solid #0ec223;
+        }
+
+        .member-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 联系方式样式 */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .contact-item i {
+            font-size: 2em;
+            color: #0ec223;
+            margin-bottom: 15px;
+        }
+
+        /* 反馈表单样式 */
+        .feedback-form {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: #0ec223;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #0b9b1c;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .mission-grid,
+            .team-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .feedback-form {
+                margin: 20px;
+            }
+        }
+
+        /* 3D翻转卡片 */
+        .mission-card {
+            perspective: 1000px;
+            height: 300px;
+        }
+
+        .mission-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .mission-card:hover .mission-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .mission-card-front, .mission-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mission-card-front {
+            background: white;
+        }
+
+        .mission-card-back {
+            background: #0ec223;
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        /* 技能进度条动 */
+        .team-member-skills {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            margin: 8px 0;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: #0ec223;
+            border-radius: 4px;
+            transform: translateX(-100%);
+            transition: transform 1s ease;
+        }
+
+        .team-member.visible .skill-progress {
+            transform: translateX(0);
+        }
+
+        /* 数字增长动画 */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 40px 0;
+            background: linear-gradient(rgba(14, 194, 35, 0.05), rgba(14, 194, 35, 0.1));
+            border-radius: 8px;
+            margin: 40px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #0ec223;
+            margin-bottom: 10px;
+        }
+
+        /* 悬浮卡片效果 */
+        .achievement-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .achievement-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #0ec223, #4CAF50);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .achievement-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* 表单动画效果 */
+        .form-group input,
+        .form-group textarea {
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUp 0.5s ease forwards;
+        }
+
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .form-group input {
+            animation-delay: 0.2s;
+        }
+
+        .form-group textarea {
+            animation-delay: 0.4s;
+        }
+
+        /* 提交按钮纹效果 */
+        .submit-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .submit-btn:active::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* 滚动进度条 */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, #0ec223, #4CAF50);
+            transform-origin: 0 50%;
+            transform: scaleX(0);
+            z-index: 1001;
+        }
+
+        /* 统计数据卡片优化 */
+        .stats-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .stat-item {
+            position: relative;
+            padding: 20px;
+            border-radius: 15px;
+            background: linear-gradient(145deg, #f6f6f6, #ffffff);
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.05),
+                        -5px -5px 15px rgba(255,255,255,0.8);
+        }
+
+        .stat-number {
+            background: linear-gradient(45deg, #0ec223, #4CAF50);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3em;
+            font-weight: 700;
+        }
+
+        /* 表单交互优化 */
+        .form-group input,
+        .form-group textarea {
+            border: 2px solid transparent;
+            background: #f8f8f8;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #0ec223;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(14, 194, 35, 0.1);
+            outline: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #0ec223, #4CAF50);
+            transform: scale(1);
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(14, 194, 35, 0.3);
+        }
+
+        /* 地图容器样式优化 */
+        .map-wrapper {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(14, 194, 35, 0.15);
+            transition: all 0.3s ease;
+            margin: 30px 0;
+        }
+
+        .map-wrapper:hover {
+            box-shadow: 0 12px 40px rgba(14, 194, 35, 0.25);
+            transform: translateY(-5px);
+        }
+
+        #mapContainer {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+        }
+
+        /* 地图控件样式优化 */
+        .amap-toolbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            padding: 5px !important;
+            border-radius: 8px !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .amap-scale {
+            background: rgba(255, 255, 255, 0.95) !important;
+            padding: 2px 5px !important;
+            border-radius: 4px !important;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        /* 信息窗体样式优化 */
+        .amap-info-content {
+            padding: 15px !important;
+            border-radius: 10px !important;
+            border: none !important;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .amap-info-close {
+            background: #fff !important;
+            border-radius: 50% !important;
+            color: #666 !important;
+            top: 10px !important;
+            right: 10px !important;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        /* 加载状态样式 */
+        .map-loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .map-loading::after {
+            content: '';
+            width: 40px;
+            height: 40px;
+            border: 3px solid #0ec223;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .map-wrapper {
+                height: 300px;
+                margin: 20px 0;
+            }
+            
+            .amap-toolbar {
+                transform: scale(0.9);
+            }
+        }
+
+        /* 地图标记点样式优化 */
+        .amap-marker-label {
+            border: none !important;
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            padding: 5px 10px !important;
+            border-radius: 4px !important;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        /* 地图缩放控件样式 */
+        .amap-touch-toolbar .amap-zoomcontrol {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            border-radius: 8px !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+            padding: 4px !important;
+        }
+
+        .amap-zoom-touch-plus,
+        .amap-zoom-touch-minus {
+            background-color: transparent !important;
+            color: #333 !important;
+            border: 1px solid #ddd !important;
+            border-radius: 4px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .amap-zoom-touch-plus:hover,
+        .amap-zoom-touch-minus:hover {
+            background-color: #f5f5f5 !important;
+            color: #0ec223 !important;
+            border-color: #0ec223 !important;
+        }
+    </style>
+</head>
+<body style="overflow-x: hidden;">
+    <!-- 导航栏 -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="首页.html">首页</a></li>
+                <li><a href="历史.html">历史</a></li>
+                <li><a href="经济.html">经济</a></li>
+                <li><a href="特产.html">特产</a></li>
+                <li><a href="风景.html">风景</a></li>
+                <li><a href="关于我们.html">关于我们</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 主要内容 -->
+    <main>
+        <section class="about-us">
+            <div class="hero-section">
+                <h1>关于我们</h1>
+                <p class="subtitle">用科技连接横州，让世界了解我们的文化瑰宝</p>
+            </div>
+
+            <div class="intro-section">
+                <div class="intro-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>我们的愿景</h3>
+                    <p>欢迎来到横州市介绍网站！我们致力于展示横州市的丰富历史、经济发展、独特特产以及美丽风景。本网站由一群热爱横州市的年轻人创建，旨在通现代的网页设计和技术手段，让更多人了解横州市的文化和魅力。</p>
+                </div>
+            </div>
+
+            <div class="mission-section">
+                <h2>我们的使命</h2>
+                <div class="mission-grid">
+                    <div class="mission-card">
+                        <div class="mission-card-inner">
+                            <div class="mission-card-front">
+                                <i class="fas fa-landmark"></i>
+                                <h3>文化传承</h3>
+                                <p>深入挖掘横州市的历史文化遗产</p>
+                            </div>
+                            <div class="mission-card-back">
+                                <p>通数字化手段护和传播横州传统文化，让更多人了解横州的历史底蕴。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-card-inner">
+                            <div class="mission-card-front">
+                                <i class="fas fa-chart-line"></i>
+                                <h3>经济发展</h3>
+                                <p>展示横市的经济发展成就和特色产业</p>
+                            </div>
+                            <div class="mission-card-back">
+                                <p>通过展示横州市的经济数据发展机遇，吸引更多投资者关注横州。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-card-inner">
+                            <div class="mission-card-front">
+                                <i class="fas fa-gift"></i>
+                                <h3>特产推广</h3>
+                                <p>推广横州独特的地方特产和美食</p>
+                            </div>
+                            <div class="mission-card-back">
+                                <p>让横州的特色美食和农产品走向全国，提升品牌知名度。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-card-inner">
+                            <div class="mission-card-front">
+                                <i class="fas fa-mountain"></i>
+                                <h3>旅游传</h3>
+                                <p>展示横州市的自然风景和旅游景点</p>
+                            </div>
+                            <div class="mission-card-back">
+                                <p>通过精美的图片和详细的介绍，吸引更多游客来横州观光旅游。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-section">
+                <h2>我们的团队</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <img src="https://img-baofun.zhhainiao.com/pcwallpaper_ugc_mobile/live/63119c88cc2294fffac71430771365f2_preview.jpg" alt="团队成员1">
+                        </div>
+                        <h3>奶龙</h3>
+                        <p>网站设计师</p>
+                        <div class="team-member-skills">
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                            <p>网页设计</p>
+                            
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                            <p>UI/UX设计</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <img src="https://img.taotu.cn/ssd/ssd3/1/2023-05-17/1_0bfb2be1677d11cd29bd7357c0baa423.jpg" alt="团队成员2">
+                        </div>
+                        <h3>GG爆</h3>
+                        <p>内容策划</p>
+                        <div class="team-member-skills">
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                            <p>内容创作</p>
+                            
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 88%"></div>
+                            </div>
+                            <p>策划管理</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <img src="https://p1.ssl.qhmsg.com/t01db137ac63a8418f4.jpg" alt="团队成员3">
+                        </div>
+                        <h3>小呆呆</h3>
+                        <p>摄影师</p>
+                        <div class="team-member-skills">
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 92%"></div>
+                            </div>
+                            <p>摄影技术</p>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 86%"></div>
+                            </div>
+                            <p>后期处理</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-section">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="1000">0</div>
+                    <p>日访问量</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="50">0</div>
+                    <p>合作伙伴</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="100">0</div>
+                    <p>文章发布</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="5000">0</div>
+                    <p>注册用户</p>
+                </div>
+            </div>
+
+            <div class="contact-section">
+                <div class="contact-info">
+                    <h2>联系我们</h2>
+                    <div class="contact-container">
+                        <div class="contact-details">
+                            <div class="contact-grid">
+                                <div class="contact-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <h3>电子邮件</h3>
+                                    <p><a href="mailto:2380567063@qq.com">2380567063@qq.com</a></p>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-phone"></i>
+                                    <h3>联系电话</h3>
+                                    <p>0771-XXXXXXXX</p>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <h3>地址</h3>
+                                    <p>广西壮族自治区南宁市横州市</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="map-wrapper">
+                            <div id="mapContainer">
+                                <div class="map-loading">
+                                    <p>地图加载中...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feedback-form">
+                    <h2>留言反馈</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="您的姓名" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="您的邮箱" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="请输入您的留言" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">发送留言</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>&copy; 2024 横州市介绍网站 | All rights reserved.</p>
+    </footer>
+
+
+    <script>
+    // 数字增长动画
+    function animateNumber(element) {
+        const target = parseInt(element.getAttribute('data-target'));
+        const duration = 2000;
+        const startTime = performance.now();
+        
+        function update(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            const current = Math.floor(target * progress);
+            element.textContent = current;
+            
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            }
+        }
+        
+        requestAnimationFrame(update);
+    }
+
+    // 监听元素进入视口
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (entry.target.classList.contains('stat-number')) {
+                    animateNumber(entry.target);
+                }
+                if (entry.target.classList.contains('team-member')) {
+                    entry.target.classList.add('visible');
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+
+    // 观察所有需要动画的元素
+    document.querySelectorAll('.stat-number, .team-member').forEach(el => {
+        observer.observe(el);
+    });
+
+    // 表单提交效果
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = this.querySelector('.submit-btn');
+        const inputs = this.querySelectorAll('input, textarea');
+        
+        // 禁用表单元素
+        inputs.forEach(input => input.disabled = true);
+        btn.disabled = true;
+        
+        btn.textContent = '发送中...';
+        
+        // 模拟提交
+        setTimeout(() => {
+            btn.textContent = '发送成功！';
+            btn.style.background = '#4CAF50';
+            this.reset();
+            
+            // 重置表单状态
+            setTimeout(() => {
+                btn.textContent = '发送留言';
+                btn.style.background = '#0ec223';
+                btn.disabled = false;
+                inputs.forEach(input => input.disabled = false);
+            }, 2000);
+        }, 1000);
+    });
+
+    // 平滑滚动效果
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // 滚动进度条
+    let scrollProgressBar = document.querySelector('.scroll-progress');
+    if (!scrollProgressBar) {
+        scrollProgressBar = document.createElement('div');
+        scrollProgressBar.className = 'scroll-progress';
+        document.body.appendChild(scrollProgressBar);
+    }
+
+    // 使用 requestAnimationFrame 优化滚动性能
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                handleScrollAnimation();
+                const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = Math.min(window.scrollY / windowHeight, 1);
+                scrollProgressBar.style.transform = `scaleX(${progress})`;
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
+
+    // 添加滚动显示动画
+    const scrollElements = document.querySelectorAll('.mission-card, .team-member, .achievement-card');
+
+    const elementInView = (el, percentageScroll = 100) => {
+        const elementTop = el.getBoundingClientRect().top;
+        return (
+            elementTop <= 
+            ((window.innerHeight || document.documentElement.clientHeight) * (percentageScroll/100))
+        );
+    };
+
+    const displayScrollElement = (element) => {
+        element.classList.add('scrolled');
+    };
+
+    const hideScrollElement = (element) => {
+        element.classList.remove('scrolled');
+    };
+
+    const handleScrollAnimation = () => {
+        scrollElements.forEach((el) => {
+            if (elementInView(el, 90)) {
+                displayScrollElement(el);
+            } else {
+                hideScrollElement(el);
+            }
+        });
+    };
+
+    // 横州市的大致坐标
+    let globalMap = null; // 添加全局地图变量
+
+    const initMap = () => {
+        try {
+            const mapOptions = {
+                zoom: 12,
+                center: [109.261384, 22.681397],
+                viewMode: '2D',
+                touchZoom: true,
+                resizeEnable: true,
+                canvas: {
+                    willReadFrequently: true
+                },
+                mapStyle: 'amap://styles/normal', // 使用标准样式
+                features: ['bg', 'road', 'building'], // 只加载必要图层
+                preloadMode: true, // 预加载模式
+                showBuildingBlock: false // 关闭建筑物块状效果
+            };
+
+            const map = new AMap.Map('mapContainer', mapOptions);
+            globalMap = map;
+
+            // 使用地理编码服务定位到横州市
+            AMap.plugin(['AMap.Geocoder'], function() {
+                const geocoder = new AMap.Geocoder();
+                
+                // 地理编码
+                geocoder.getLocation('广西壮族自治区南宁市横州市', function(status, result) {
+                    if (status === 'complete' && result.info === 'OK') {
+                        // 获取横州市的位置信息
+                        const location = result.geocodes[0].location;
+                        
+                        // 设置地图中心点
+                        map.setCenter([location.lng, location.lat]);
+                        
+                        // 添加标记
+                        const marker = new AMap.Marker({
+                            position: [location.lng, location.lat],
+                            title: '横州市',
+                            animation: 'AMAP_ANIMATION_BOUNCE' // 添加跳动动画
+                        });
+                        
+                        map.add(marker);
+                        
+                        // 添加信息窗体
+                        const infoWindow = new AMap.InfoWindow({
+                            content: `
+                                <div style="padding: 15px;">
+                                    <h4 style="margin: 0 0 5px; color: #0ec223;">横州市</h4>
+                                    <p style="margin: 0; font-size: 12px;">广西壮族自治区南宁市横州市</p>
+                                    <p style="margin: 5px 0 0; font-size: 12px;">
+                                        <span style="color: #666;">经度：</span>${location.lng.toFixed(6)}
+                                        <br>
+                                        <span style="color: #666;">纬度：</span>${location.lat.toFixed(6)}
+                                    </p>
+                                </div>
+                            `,
+                            offset: new AMap.Pixel(0, -30),
+                            closeWhenClickMap: true // 点击地图其他区域关闭信息窗体
+                        });
+                        
+                        // 绑定点击事件
+                        marker.on('click', () => {
+                            infoWindow.open(map, marker.getPosition());
+                        });
+                        
+                        // 自动打开信息窗体
+                        infoWindow.open(map, marker.getPosition());
+                        
+                        // 添加行政区划
+                        AMap.plugin(['AMap.DistrictSearch'], function() {
+                            const districtSearch = new AMap.DistrictSearch({
+                                level: 'district',
+                                subdistrict: 1
+                            });
+                            
+                            districtSearch.search('横州市', function(status, result) {
+                                if (status === 'complete') {
+                                    const bounds = result.districtList[0].boundaries;
+                                    const polygon = new AMap.Polygon({
+                                        path: bounds,
+                                        strokeColor: '#0ec223',
+                                        strokeWeight: 2,
+                                        strokeOpacity: 0.8,
+                                        fillColor: '#0ec223',
+                                        fillOpacity: 0.1
+                                    });
+                                    map.add(polygon);
+                                    // 自适应显示行政区划范围
+                                    map.setFitView([polygon]);
+                                }
+                            });
+                        });
+                    }
+                });
+            });
+
+            // 添加控件
+            AMap.plugin([
+                'AMap.ToolBar',
+                'AMap.Scale',
+                'AMap.HawkEye',
+                'AMap.MapType',
+                'AMap.Geolocation'
+            ], function(){
+                // 添加工具条
+                map.addControl(new AMap.ToolBar({
+                    position: 'RB',
+                    liteStyle: true
+                }));
+                
+                // 添加比例尺
+                map.addControl(new AMap.Scale());
+
+                // 添加鹰眼
+                map.addControl(new AMap.HawkEye({
+                    opened: true,
+                    mapStyle: 'amap://styles/normal'
+                }));
+
+                // 添加地图类型切换
+                map.addControl(new AMap.MapType({
+                    defaultType: 0,
+                    showRoad: true
+                }));
+
+                // 添加定位控件
+                map.addControl(new AMap.Geolocation({
+                    position: 'RB',
+                    offset: [10, 20]
+                }));
+            });
+
+            // 优化触摸事件
+            const mapContainer = document.getElementById('mapContainer');
+            if (mapContainer) {
+                mapContainer.addEventListener('touchstart', () => {}, { passive: true });
+                mapContainer.addEventListener('touchmove', () => {}, { passive: true });
+            }
+
+        } catch (error) {
+            console.error('地图初始化失败:', error);
+            document.getElementById('mapContainer').innerHTML = `
+                <div style="padding: 20px; text-align: center;">
+                    <i class="fas fa-map-marked-alt" style="font-size: 48px; color: #ccc;"></i>
+                    <p style="margin-top: 10px;">地图加载失败，请刷新页面重试</p>
+                </div>
+            `;
+        }
+    };
+
+    // 优化地图加载方式
+    const loadMap = () => {
+        if (typeof AMap !== 'undefined') {
+            // 使用 requestIdleCallback 在浏览器空闲时初始化地图
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(() => initMap(), { timeout: 2000 });
+            } else {
+                setTimeout(initMap, 100);
+            }
+        }
+    };
+
+    // 修改加载触发方式
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadMap);
+    } else {
+        loadMap();
+    }
+
+    // 优化窗口调整事件
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        if (resizeTimeout) {
+            clearTimeout(resizeTimeout);
+        }
+        resizeTimeout = setTimeout(() => {
+            if (typeof AMap !== 'undefined') {
+                const map = new AMap.Map('mapContainer');
+                map.setFitView();
+            }
+        }, 200);
+    }, { passive: true });
+
+    // 监听容器大小变化，重新调整地图
+    window.addEventListener('resize', () => {
+        const map = new AMap.Map('mapContainer');
+        map.setFitView();
+    });
+
+    // 修改技能进度条动画
+    const skillObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                requestAnimationFrame(() => {
+                    const skills = entry.target.querySelectorAll('.skill-progress');
+                    skills.forEach(skill => {
+                        skill.style.transform = 'translateX(0)';
+                        skill.style.transition = 'transform 1s ease';
+                    });
+                });
+                skillObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.5,
+        rootMargin: '0px'
+    });
+
+    // 观察所有技能条
+    document.querySelectorAll('.team-member').forEach(member => {
+        skillObserver.observe(member);
+    });
+
+    // 优化地图重新加载
+    const reinitMap = (() => {
+        let timeoutId;
+        return () => {
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+            }
+            timeoutId = setTimeout(() => {
+                if (typeof AMap !== 'undefined') {
+                    const map = new AMap.Map('mapContainer', {
+                        canvas: { willReadFrequently: true }
+                    });
+                    map.setFitView();
+                }
+            }, 200);
+        };
+    })();
+
+    // 使用优化后的重新加载函数
+    window.addEventListener('resize', reinitMap, { passive: true });
+
+    // 添加性能监控
+    const monitorPerformance = () => {
+        if (window.performance && window.performance.mark) {
+            const observer = new PerformanceObserver((list) => {
+                list.getEntries().forEach(entry => {
+                    console.log(`${entry.name}: ${entry.duration}ms`);
+                });
+            });
+            
+            observer.observe({ entryTypes: ['measure'] });
+            
+            window.performance.mark('mapStart');
+            
+            // 在地图加载完成后记录
+            map.on('complete', () => {
+                window.performance.mark('mapEnd');
+                window.performance.measure('Map Loading', 'mapStart', 'mapEnd');
+            });
+        }
+    };
+
+    // 添加错误处理和重试机制
+    const initMapWithRetry = (retries = 3) => {
+        try {
+            initMap();
+        } catch (error) {
+            console.error(`地图初始化失败，剩余重试次数：${retries}`, error);
+            if (retries > 0) {
+                setTimeout(() => initMapWithRetry(retries - 1), 1000);
+            }
+        }
+    };
+
+    // 修改地址卡片点击事件监听器
+    document.addEventListener('DOMContentLoaded', function() {
+        // 声明全局地图变量
+        let map = null;
+
+        // 初始化地图函数
+        function initMap() {
+            // 创建地图实例
+            map = new AMap.Map('mapContainer', {
+                zoom: 12,
+                center: [109.261384, 22.681397],
+                viewMode: '2D',
+                resizeEnable: true
+            });
+
+            // 添加初始标记
+            const marker = new AMap.Marker({
+                position: [109.261384, 22.681397],
+                title: '横州市'
+            });
+            map.add(marker);
+
+            // 添加初始信息窗体
+            const infoWindow = new AMap.InfoWindow({
+                content: `
+                    <div style="padding: 15px;">
+                        <h4 style="margin: 0 0 5px; color: #0ec223;">横州市</h4>
+                        <p style="margin: 0; font-size: 12px;">广西壮族自治区南宁市横州市</p>
+                    </div>
+                `,
+                offset: new AMap.Pixel(0, -30)
+            });
+            infoWindow.open(map, marker.getPosition());
+
+            // 绑定地址卡片点击事件
+            bindAddressCardClick();
+        }
+
+        // 绑定地址卡片点击事件函数
+        function bindAddressCardClick() {
+            const addressCards = document.querySelectorAll('.contact-item');
+            
+            addressCards.forEach(card => {
+                const mapIcon = card.querySelector('i.fa-map-marker-alt');
+                if (mapIcon) {
+                    card.style.cursor = 'pointer';
+                    
+                    card.addEventListener('click', function() {
+                        try {
+                            if (!map) {
+                                console.error('地图未初始化');
+                                return;
+                            }
+
+                            // 定位到横州市
+                            map.setZoomAndCenter(13, [109.261384, 22.681397], false, {
+                                duration: 800
+                            });
+
+                            // 清除现有标记
+                            map.clearMap();
+
+                            // 添加新标记
+                            const marker = new AMap.Marker({
+                                position: [109.261384, 22.681397],
+                                animation: 'AMAP_ANIMATION_BOUNCE',
+                                title: '横州市'
+                            });
+                            map.add(marker);
+
+                            // 添加信息窗体
+                            const infoWindow = new AMap.InfoWindow({
+                                content: `
+                                    <div style="padding: 15px;">
+                                        <h4 style="margin: 0 0 5px; color: #0ec223;">横州市</h4>
+                                        <p style="margin: 0; font-size: 12px;">广西壮族自治区南宁市横州市</p>
+                                    </div>
+                                `,
+                                offset: new AMap.Pixel(0, -30)
+                            });
+                            infoWindow.open(map, marker.getPosition());
+
+                            // 滚动到地图位置
+                            const mapWrapper = document.querySelector('.map-wrapper');
+                            if (mapWrapper) {
+                                mapWrapper.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'center'
+                                });
+                            }
+
+                            // 点击反馈效果
+                            card.style.transform = 'scale(0.95)';
+                            setTimeout(() => {
+                                card.style.transform = 'scale(1)';
+                            }, 200);
+
+                        } catch (error) {
+                            console.error('地图操作失败:', error);
+                        }
+                    });
+
+                    // 添加悬停效果
+                    card.addEventListener('mouseenter', function() {
+                        this.style.transform = 'translateY(-5px)';
+                        this.style.boxShadow = '0 8px 20px rgba(14, 194, 35, 0.2)';
+                    });
+
+                    card.addEventListener('mouseleave', function() {
+                        this.style.transform = 'translateY(0)';
+                        this.style.boxShadow = 'none';
+                    });
+                }
+            });
+        }
+
+        // 处理窗口大小改变
+        window.addEventListener('resize', () => {
+            if (map) {
+                map.setFitView();
+            }
+        }, { passive: true });
+
+        // 确保地图 API 加载完成后再初始化
+        if (typeof AMap !== 'undefined') {
+            initMap();
+        } else {
+            // 如果 API 还未加载完成，等待加载
+            window._AMapSecurityConfig = {
+                securityJsCode: '828d56dc30df4b2b6fbf83356b8c2477'
+            };
+            const script = document.createElement('script');
+            script.src = 'https://webapi.amap.com/maps?v=2.0&key=828d56dc30df4b2b6fbf83356b8c2477';
+            script.onload = initMap;
+            document.head.appendChild(script);
+        }
+    });
+
+    // 添加 Canvas 优化配置
+    const optimizeCanvas = () => {
+        const canvas = document.querySelector('#mapContainer canvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d', {
+                willReadFrequently: true,
+                alpha: false // 禁用 alpha 通道以提高性能
+            });
+            
+            // 设置合适的画布大小
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = canvas.offsetWidth * dpr;
+            canvas.height = canvas.offsetHeight * dpr;
+            ctx.scale(dpr, dpr);
+        }
+    };
+
+    // 在地图初始化后调用
+    map.on('complete', optimizeCanvas);
+
+    // 添加 Cookie 处理
+    const handleCookieConsent = () => {
+        // 检查是否已经处理过 Cookie 同意
+        if (!localStorage.getItem('cookieConsent')) {
+            const consent = confirm('本网站使用 Cookie 来提供更好的服务。继续使用表示您同意我们的 Cookie 政策。');
+            localStorage.setItem('cookieConsent', consent);
+        }
+    };
+
+    // 在适当的时机调用
+    document.addEventListener('DOMContentLoaded', handleCookieConsent);
+    </script>
+</body>
+</html>

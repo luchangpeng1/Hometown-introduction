@@ -1,0 +1,2557 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>南宁横州市首页</title>
+</head>
+
+<body>
+    <div class="loading">
+        <div class="loading-spinner"></div>
+    </div>
+    
+    <!-- 添加遮罩层元素 -->
+    <div class="search-overlay"></div>
+
+    <!-- 侧边导航栏 -->
+    <div id="sidebar" class="sidebar">
+        <button id="closeBtn" class="close-btn">&times;</button>
+        <nav>
+            <ul>
+                <li><a href="首页.html">首页</a></li>
+                <li><a href="历史.html">历史</a></li>
+                <li><a href="风景.html">风景</a></li>
+                <li><a href="特产.html">特产</a></li>
+                <li><a href="经济.html">经济</a></li>
+                <li><a href="关于我们.html">关于我们</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- 菜单按钮 -->
+    <button id="menuBtn" class="menu-btn">&#9776; 菜单</button>
+
+    <!-- 主体内容区域 -->
+    <div class="content">
+        <header>
+            <div class="user-info">
+                <span class="user-avatar">👤</span>
+                <span id="userDisplay"></span>
+                <div class="user-dropdown">
+                    <div class="dropdown-item">
+                        <i class="item-icon">👤</i>
+                        <span>个人信息</span>
+                    </div>
+                    <div class="dropdown-item">
+                        <i class="item-icon">⭐</i>
+                        <span>我的收藏</span>
+                    </div>
+                    <div class="dropdown-item">
+                        <i class="item-icon">📜</i>
+                        <span>浏览历史</span>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-item logout">
+                        <i class="item-icon">🚪</i>
+                        <span>退出登录</span>
+                    </div>
+                </div>
+            </div>
+            <h1>欢迎来到南宁横州市旅游网站</h1>
+            <p>探索南宁横州市的历史、风景、特产和更多。</p>
+        </header>
+
+        <!-- 查询功能 -->
+        <section class="search">
+            <div class="search-header">
+                <h3>快速查询</h3>
+                <span class="search-tips">🔍 输入关键词搜索景点、特产或相关信息</span>
+            </div>
+
+            <div class="form-group">
+                <div class="select-wrapper">
+                    <select id="category" name="category">
+                        <option value="全部">全部分类</option>
+                        <option value="景点">景点</option>
+                        <option value="特产">特产</option>
+                        <option value="美食">美食</option>
+                    </select>
+                </div>
+                <div class="search-box">
+                    <input type="text" id="query" name="query" placeholder="请输入查询内容...">
+                </div>
+                <button id="searchBtn">
+                    <span class="search-icon">🔍</span>
+                    <span class="search-text">搜索</span>
+                </button>
+                <button id="showAllBtn" class="show-all-btn">
+                    <span class="show-all-icon">📋</span>
+                    <span class="show-all-text">显示所有</span>
+                </button>
+            </div>
+
+            <div class="quick-tags">
+                <span>热门搜索：</span>
+                <button class="tag" data-keyword="茉莉花">茉莉花</button>
+                <button class="tag" data-keyword="古塔">古塔</button>
+                <button class="tag" data-keyword="美食">特色美食</button>
+                <button class="tag" data-keyword="手工艺">手工艺品</button>
+            </div>
+
+            <div class="search-stats">
+                <span id="resultCount"></span>
+                <button id="clearSearch" class="clear-btn">清除搜索</button>
+            </div>
+        </section>
+
+        <!-- 结果展示 -->
+        <section id="results" class="results"></section>
+
+        <!-- 图片轮播 -->
+        <div class="carousel">
+            <div class="carousel-images">
+                <img src="https://th.bing.com/th/id/OIP.pF6-l_FqPMjSr5RSuqfdcgHaFj?rs=1&pid=ImgDetMain" alt="历史"
+                    class="carousel-image" loading="lazy">
+                <img src="https://p2.cri.cn/M00/35/91/rBABCWEQjbGAFxyDAAAAAAAAAAA077.900x600.jpg" alt="风景"
+                    class="carousel-image" loading="lazy">
+                <img src="https://th.bing.com/th/id/R.b98ddadcbee2fc229d1f31058988becf?rik=oXyqGNX20MJ5UA&riu=http%3a%2f%2fhzswhg.org.cn%2fupload%2fimages%2f2022%2f6%2f9dbcae2f4f01f7fd.jpg&ehk=ENk0sZQNPGXN2yXoajoaYSpYCtj2KpDYh%2bX%2fwGfsrPE%3d&risl=&pid=ImgRaw&r=0"
+                    alt="特产" class="carousel-image" loading="lazy">
+                <img src="https://th.bing.com/th/id/R.ab4485d68542e193b6e116d6fe765fa8?rik=IJ3gm6yB758bNg&riu=http%3a%2f%2fn.sinaimg.cn%2fsinakd20110%2f0%2fw1024h576%2f20221123%2f3942-4394367281b15ac82c23ee430c1f1978.jpg&ehk=3DPMCGTgg%2bC6qPaRFXoqn%2bcfYo%2fxHNpxW7nOGzkr4co%3d&risl=&pid=ImgRaw&r=0"
+                    alt="其他" class="carousel-image" loading="lazy">
+            </div>
+            <button class="carousel-control prev" onclick="changeImage(-1)" aria-label="上一张">&#10094;</button>
+            <button class="carousel-control next" onclick="changeImage(1)" aria-label="下一张">&#10095;</button>
+            <div class="carousel-indicators">
+                <span class="indicator active"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+            </div>
+        </div>
+
+        <section class="features">
+            <div class="feature-item">
+                <a href="历史.html">
+                    <div class="feature-image">
+                        <img src="https://www.molihua.net/data/attachment/forum/201210/03/2007179vuvnjf7kqvuf7n8.jpg"
+                            alt="历史" loading="lazy" />
+                        <div class="feature-overlay">
+                            <div class="overlay-content">
+                                <span class="view-more">了解更多</span>
+                                <span class="overlay-desc">探索横州千年文化底蕴</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <div class="feature-header">
+                            <h3>历史文化</h3>
+                            <div class="feature-icon">📚</div>
+                        </div>
+                        <div class="feature-tags">
+                            <span class="tag">文化遗产</span>
+                            <span class="tag">历史古迹</span>
+                            <span class="tag">民俗风情</span>
+                        </div>
+                        <p class="main-desc">南宁横州市有着丰富的历史文化背景，千年古城见证岁月沧桑。</p>
+                        <ul class="feature-highlights">
+                            <li><i class="highlight-icon">🏛️</i>千年古城文化</li>
+                            <li><i class="highlight-icon"></i>历史遗迹众多</li>
+                            <li><i class="highlight-icon">👥</i>民俗文化丰富</li>
+                            <li><i class="highlight-icon">📖</i>人文故事动人</li>
+                        </ul>
+                        <div class="feature-footer">
+                            <span class="read-more">点击探索 →</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="feature-item">
+                <a href="风景.html">
+                    <div class="feature-image">
+                        <img src="https://th.bing.com/th/id/R.61903aea4d5cf29386ea1d54b50b684c?rik=Gp50%2fksIc%2bJ0xQ&riu=http%3a%2f%2fwww.nanning.china.com.cn%2fimages%2f2022-10%2f26%2f31f39a89-a681-43da-b6cb-362a1631dd67.jpeg&ehk=Q5VkZDeHmRyeJZuqsooWngplQDQr3GfpWv6VJ7DJlb8%3d&risl=&pid=ImgRaw&r=0"
+                            alt="风景" loading="lazy" />
+                        <div class="feature-overlay">
+                            <div class="overlay-content">
+                                <span class="view-more">探索美景</span>
+                                <span class="overlay-desc">邂逅自然人文之美</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <div class="feature-header">
+                            <h3>自然风光</h3>
+                            <div class="feature-icon">🌺</div>
+                        </div>
+                        <div class="feature-tags">
+                            <span class="tag">自然景观</span>
+                            <span class="tag">人文景点</span>
+                            <span class="tag">生态旅游</span>
+                        </div>
+                        <p class="main-desc">从茉莉花园到山水田园，横州市拥有独特的自然人文景观。</p>
+                        <ul class="feature-highlights">
+                            <li><i class="highlight-icon">🌸</i>茉莉花园风光</li>
+                            <li><i class="highlight-icon">🏞️</i>山水田园景色</li>
+                            <li><i class="highlight-icon">🏛️</i>特色古建筑</li>
+                            <li><i class="highlight-icon">🌿</i>生态休闲胜地</li>
+                        </ul>
+                        <div class="feature-footer">
+                            <span class="read-more">点击探索 →</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="feature-item">
+                <a href="特产.html">
+                    <div class="feature-image">
+                        <img src="https://n.sinaimg.cn/sinakd10110/545/w812h533/20211122/7338-33a0529a876174715d053fe132ce4f0c.jpg"
+                            alt="特产" loading="lazy" />
+                        <div class="feature-overlay">
+                            <div class="overlay-content">
+                                <span class="view-more">品味特产</span>
+                                <span class="overlay-desc">感受地道美食文化</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <div class="feature-header">
+                            <h3>地方特产</h3>
+                            <div class="feature-icon">🍵</div>
+                        </div>
+                        <div class="feature-tags">
+                            <span class="tag">美食</span>
+                            <span class="tag">手工艺</span>
+                            <span class="tag">农特产品</span>
+                        </div>
+                        <p class="main-desc">横州市特产丰富多样，从茉莉花茶到传统手工艺，应有尽有。</p>
+                        <ul class="feature-highlights">
+                            <li><i class="highlight-icon">🍃</i>茉莉花茶</li>
+                            <li><i class="highlight-icon">🎨</i>传统手工艺</li>
+                            <li><i class="highlight-icon">🍜</i>特色小吃</li>
+                            <li><i class="highlight-icon"></i>农产品品牌</li>
+                        </ul>
+                        <div class="feature-footer">
+                            <span class="read-more">点击探索 →</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 南宁横州市旅游网站</p>
+        </footer>
+    </div>
+
+    <script>
+        // 获取菜单按钮侧边栏
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebar = document.getElementById('sidebar');
+        const closeBtn = document.getElementById('closeBtn');
+
+        // 打开侧边栏函数
+        function openSidebar() {
+            sidebar.style.width = '250px';
+            sidebar.style.left = '0';
+            sidebar.classList.add('active');
+            menuBtn.style.display = 'none';
+            
+            // 为每个导航项添加延迟动画
+            const navItems = sidebar.querySelectorAll('nav ul li');
+            navItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateX(0)';
+                }, 100 * (index + 1));
+            });
+        }
+
+        // 关闭侧边栏函数
+        function closeSidebar() {
+            sidebar.style.width = '0';
+            sidebar.classList.remove('active');
+            menuBtn.style.display = 'block';
+            
+            // 重置导航项样式
+            const navItems = sidebar.querySelectorAll('nav ul li');
+            navItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(-20px)';
+            });
+            
+            // 隐藏所有预览
+            const previews = document.querySelectorAll('.nav-preview');
+            previews.forEach(preview => {
+                preview.style.opacity = '0';
+                preview.style.visibility = 'hidden';
+            });
+        }
+
+        // 鼠标移到菜单按钮上时打开侧边栏
+        menuBtn.addEventListener('mouseenter', openSidebar);
+
+        // 鼠标移到导航栏上时，导航栏保持不消失
+        sidebar.addEventListener('mouseenter', () => {
+            if (sidebar.style.width === '0px') {
+                openSidebar();
+            }
+        });
+
+        // 鼠标移出导航栏时关闭侧边栏
+        sidebar.addEventListener('mouseleave', closeSidebar);
+
+        // 关闭按钮点击事件
+        closeBtn.addEventListener('click', closeSidebar);
+
+        // 添加键盘快捷键支持
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && sidebar.style.width !== '0px') {
+                closeSidebar();
+            }
+        });
+
+        // 轮播图相关代码
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.carousel-image');
+        const totalImages = images.length;
+        let autoPlayInterval;
+
+        // 更新指示器状态
+        function updateIndicators() {
+            const indicators = document.querySelectorAll('.indicator');
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        // 切换到指定图片
+        function switchToImage(index) {
+            // 淡出当前图片
+            images[currentIndex].style.opacity = '0';
+            images[currentIndex].style.zIndex = '0';
+            images[currentIndex].style.transform = 'scale(1.1)';
+
+            // 更新索引
+            currentIndex = index;
+
+            // 淡入新图片
+            images[currentIndex].style.opacity = '1';
+            images[currentIndex].style.zIndex = '1';
+            images[currentIndex].style.transform = 'scale(1)';
+
+            // 更新指示器
+            updateIndicators();
+        }
+
+        // 显示下一张图片
+        function showNextImage() {
+            const nextIndex = (currentIndex + 1) % totalImages;
+            switchToImage(nextIndex);
+        }
+
+        // 显示上一张图片
+        function showPrevImage() {
+            const prevIndex = (currentIndex - 1 + totalImages) % totalImages;
+            switchToImage(prevIndex);
+        }
+
+        // 处理方向按钮点击
+        function changeImage(direction) {
+            // 清除自动播放定时器
+            clearInterval(autoPlayInterval);
+            
+            if (direction > 0) {
+                showNextImage();
+            } else {
+                showPrevImage();
+            }
+            
+            // 重新启动自动播放
+            startAutoPlay();
+        }
+
+        // 启动自动播放
+        function startAutoPlay() {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = setInterval(showNextImage, 4000);
+        }
+
+        // 初化轮播图
+        function initializeCarousel() {
+            // 设置初始状态
+            images.forEach((img, index) => {
+                img.style.opacity = index === 0 ? '1' : '0';
+                img.style.zIndex = index === 0 ? '1' : '0';
+                img.style.transform = index === 0 ? 'scale(1)' : 'scale(1.1)';
+                img.style.transition = 'all 0.8s ease-in-out';
+            });
+
+            // 初始化指示器点击事件
+            const indicators = document.querySelectorAll('.indicator');
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    clearInterval(autoPlayInterval);
+                    switchToImage(index);
+                    startAutoPlay();
+                });
+            });
+
+            // 添加鼠标功能
+            const carousel = document.querySelector('.carousel');
+            carousel.addEventListener('mouseenter', () => {
+                clearInterval(autoPlayInterval);
+            });
+
+            carousel.addEventListener('mouseleave', () => {
+                startAutoPlay();
+            });
+
+            // 更新初始指示器状态
+            updateIndicators();
+
+            // 启动自动播放
+            startAutoPlay();
+        }
+
+        // 加载完成后初始化轮播图
+        document.addEventListener('DOMContentLoaded', initializeCarousel);
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const sampleData = {
+                '景点': [
+                    { name: '横州市博物馆', img: 'https://th.bing.com/th/id/OIP.8Q_jBjPTzLGEwdUsy_qVlQHaFh?rs=1&pid=ImgDetMain', description: '一个充满历史的博物馆，展示着横州市的文化遗产。馆内收藏了大量珍贵文物，包括陶器、青铜器和历代书画作品。' },
+                    { name: '横州茉莉花园', img: 'https://ts1.cn.mm.bing.net/th/id/R-C.1ae26ee8c63abdc98630561feedb8dd3?rik=UCy4WEy1ycUobg&riu=http%3a%2f%2fwww.bbrtv.com%2fuploadfile%2fimage%2f2020%2f0911%2f20200911160436_37962.jpg&ehk=wED0Cb%2fZ5Ty0ZQKZlc80JSenJr2T1D9YIxvIxSJ0a00%3d&risl=&pid=ImgRaw&r=0', description: '横州最大的茉莉花种植基地，占地面积达500亩，是观赏茉莉花、了解茉莉花文化的最佳去处。' },
+                    { name: '六景温泉度假村', img: 'https://ts1.cn.mm.bing.net/th/id/R-C.89b6653cc9fe47f3b4a9e0ec1e5549d9?rik=X6kfLf8QIgD3JA&riu=http%3a%2f%2fwww.tianmu.net%2fimages%2fimage%2f20220604%2f20220604122951_47422.jpg&ehk=aHMTpIdiHY7DiolPu3A818ZLNMYQjxPyJHsesH%2bQijU%3d&risl=&pid=ImgRaw&r=0', description: '位于横州市六景镇的温泉度假胜地，拥有多个天然温泉池，环境优美，是休闲度假的理想选择。' },
+                    { name: '南山公园', img: 'https://youimg1.c-ctrip.com/target/100r0i000000987loE3FE.jpg', description: '横州市区最大的综合性公园，园内有湖泊、亭台楼阁，是市民休闲娱乐的好去处。' },
+                    { name: '古龙文化园', img: 'https://youimg1.c-ctrip.com/target/100q0v000000k2atl1D47_D_10000_1200.jpg?proc=autoorient', description: '展示横州传统文化的主题公园，内有古建筑群和各类文化展示区，是了解横州历史文化的重要场所。' }
+                ],
+                '特产': [
+                    { name: '横州茉莉花茶', img: 'https://pic1.zhimg.com/v2-6314b7555e7922f20841d8f05eb176f8_r.jpg', description: '横州最著名的特产，采用优质茉莉花与绿茶窨制而成，香气浓郁，滋味甘醇。' },
+                    { name: '横州沙田柚', img: 'https://ts1.cn.mm.bing.net/th/id/R-C.2d88744b29c4239b7d0cf309479adfa1?rik=lAAxik265M4e0Q&riu=http%3a%2f%2fimg.gxlesou.com%2f2550%2f20210418%2fda874c833918733114e5a57b69fddde8.jpg&ehk=VgsA20ZIgCnqK6yPttm03Na%2bP5%2f%2f0X2gDgi2xlwJdOI%3d&risl=&pid=ImgRaw&r=0', description: '横州特产水果，果肉细嫩多汁，清甜爽口富含维生素C。' },
+                    { name: '横州香芋', img: 'https://img.zcool.cn/community/0181536232f0cb11013e89537e1c4b.jpg', description: '横州传统农产品，口感绵密，香味浓郁，营养丰富。' },
+                    { name: '横州龙眼干', img: 'https://tse1-mm.cn.bing.net/th/id/OIP-C.ImYyVfvneP-3aVDlUP1DVAHaE7?rs=1&pid=ImgDetMain', description: '采用本地优质龙眼烘制而成，肉质金黄，甜度适中，营养价值高。' },
+                    { name: '横州腊', img: 'https://ts1.cn.mm.bing.net/th/id/R-C.97efd558128739f2952063e291b462de?rik=9szHlJvOPEG4xQ&riu=http%3a%2f%2fpic.ntimg.cn%2ffile%2f20150907%2f21573978_220345364000_2.jpg&ehk=5vL%2bp%2fnLAVPJUtZbUBHIGPzbZ8A9vfi%2b57x405vmftM%3d&risl=&pid=ImgRaw&r=0', description: '传统腊制品，包括腊肠、腊肉等，采用传统艺制作，味道鲜美。' }
+                ],
+                '美食': [
+                    { name: '横州米粉', img: 'https://img2.voc.com.cn/remote/2020/04/11/1022_13d30ddee371f031874670e6d30031b6f58f2f71.jpg', description: '州特色小吃，采本地优质米粉，配以各种新鲜蔬菜炒制，清淡爽口。' },
+                    { name: '横州老鸭粉', img: 'https://tse1-mm.cn.bing.net/th/id/OIP-C.r2rqLUoKCkCKMda2azcEewHaE8?rs=1&pid=ImgDetMain', description: '使用本地土鸭熬制的汤，配以米粉，汤鲜味美，深受欢迎。' },
+                    { name: '横州酿豆腐', img: 'https://ts1.cn.mm.bing.net/th/id/R-C.285567b4c604af1bc11bf6f31ec37632?rik=SdWnmy9gJyEJRw&riu=http%3a%2f%2fwww.szzoe.cn%2fueditor%2fphp%2fupload%2fimage%2f20190910%2f1568102648915070.jpg&ehk=PYsj2f9ls2Y40ZGKldONlE%2fWZkiQfpJCzCFHgjhAMxM%3d&risl=&pid=ImgRaw&r=0', description: '将新鲜豆腐挖空，内填肉馅，蒸制而成，外嫩内香。' },
+                    { name: '横州艾糍粑', img: 'https://ts1.cn.mm.bing.net/th/id/R-C.a640116b879921c5a0d7c9ba1cec7406?rik=Bdkvm6yZnquM3Q&riu=http%3a%2f%2fcp1.douguo.net%2fupload%2fcaiku%2ff%2fa%2f8%2fyuan_fa40ac9704be2b82dd3f2319c70af228.jpg&ehk=Mqk9eokfIMGskic%2bpmOBn2MhryTEoa72WqxWts9EkDE%3d&risl=&pid=ImgRaw&r=0', description: '传统节日小吃，用艾草和糯米制成，清香可口，寓意健康。' },
+                    { name: '横州荷叶粉', img: 'https://pic.nximg.cn/file/20201228/23047796_104811608907_2.jpg', description: '将米粉裹在荷叶中蒸制，具有独特的荷叶清香，是横州独特的美食。' }
+                ]
+            };
+
+            // 搜索功能
+            function getSearchResults(query, category) {
+                if (category === '全部') {
+                    return Object.values(sampleData)
+                        .flat()
+                        .filter(item => 
+                            item.name.toLowerCase().includes(query.toLowerCase()) ||
+                            item.description.toLowerCase().includes(query.toLowerCase())
+                        );
+                } else {
+                    return (sampleData[category] || []).filter(item =>
+                        item.name.toLowerCase().includes(query.toLowerCase()) ||
+                        item.description.toLowerCase().includes(query.toLowerCase())
+                    );
+                }
+            }
+
+            // 获取类别
+            function getCategoryByItem(item, data) {
+                for (let category in data) {
+                    if (data[category].some(i => i.name === item.name)) {
+                        return `类别：${category}`;
+                    }
+                }
+                return '';
+            }
+
+            // 搜索按钮点击事件
+            document.getElementById('searchBtn').addEventListener('click', function() {
+                const query = document.getElementById('query').value.trim();
+                const category = document.getElementById('category').value;
+                const resultsSection = document.getElementById('results');
+                
+                // 创建遮罩层
+                let overlay = document.querySelector('.search-overlay');
+                if (!overlay) {
+                    overlay = document.createElement('div');
+                    overlay.className = 'search-overlay';
+                    document.body.appendChild(overlay);
+                }
+
+                // 清空先前的结果
+                resultsSection.innerHTML = '';
+
+                if (!query) {
+                    resultsSection.innerHTML = '<p style="text-align: center; padding: 20px;">请输入搜索内容</p>';
+                    resultsSection.style.display = 'block';
+                    overlay.classList.add('active');
+                    return;
+                }
+
+                const results = getSearchResults(query, category);
+                if (results.length > 0) {
+                    resultsSection.innerHTML = results.map(item => `
+                        <div class="result-item">
+                            <img src="${item.img}" alt="${item.name}" class="result-img"/>
+                            <div class="result-description">
+                                <h3>${item.name}</h3>
+                                <p class="category-tag">${getCategoryByItem(item, sampleData)}</p>
+                                <p>${item.description}</p>
+                            </div>
+                        </div>
+                    `).join('');
+                    resultsSection.style.display = 'block';
+                    overlay.classList.add('active');
+                } else {
+                    resultsSection.innerHTML = '<p style="text-align: center; padding: 20px;">未找到相关内容</p>';
+                    resultsSection.style.display = 'block';
+                    overlay.classList.add('active');
+                }
+
+                // 更新搜索统计
+                document.getElementById('resultCount').textContent = 
+                    `找到 ${results.length} 个结果`;
+            });
+
+            // 清除搜索按钮
+            document.getElementById('clearSearch').addEventListener('click', function() {
+                document.getElementById('query').value = '';
+                document.getElementById('category').value = '全部';
+                document.getElementById('results').style.display = 'none';
+                document.getElementById('resultCount').textContent = '';
+                const overlay = document.querySelector('.search-overlay');
+                if (overlay) {
+                    overlay.classList.remove('active');
+                }
+            });
+
+            // 快速标签点击事件
+            document.querySelectorAll('.tag').forEach(tag => {
+                tag.addEventListener('click', function() {
+                    document.getElementById('query').value = this.dataset.keyword;
+                    document.getElementById('searchBtn').click();
+                });
+            });
+
+            // 点击遮罩层关闭搜索结果
+            document.addEventListener('click', function(e) {
+                const resultsSection = document.getElementById('results');
+                const overlay = document.querySelector('.search-overlay');
+                const searchArea = e.target.closest('.search, #results');
+                const isSearchButton = e.target.closest('#searchBtn');
+                const isTag = e.target.closest('.tag');
+                
+                if (!searchArea && !isSearchButton && !isTag) {
+                    resultsSection.style.display = 'none';
+                    if (overlay) {
+                        overlay.classList.remove('active');
+                    }
+                }
+            });
+
+            // ESC键关闭搜索结果
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const resultsSection = document.getElementById('results');
+                    const overlay = document.querySelector('.search-overlay');
+                    resultsSection.style.display = 'none';
+                    if (overlay) {
+                        overlay.classList.remove('active');
+                    }
+                }
+            });
+
+            // 显示所有按钮点击事件
+            document.getElementById('showAllBtn').addEventListener('click', function() {
+                const resultsSection = document.getElementById('results');
+                const overlay = document.querySelector('.search-overlay');
+                
+                // 显示所有数据
+                const allResults = [];
+                for (let category in sampleData) {
+                    allResults.push(...sampleData[category]);
+                }
+                
+                if (allResults.length > 0) {
+                    resultsSection.innerHTML = allResults.map(item => `
+                        <div class="result-item">
+                            <img src="${item.img}" alt="${item.name}" class="result-img"/>
+                            <div class="result-description">
+                                <h3>${item.name}</h3>
+                                <p class="category-tag">${getCategoryByItem(item, sampleData)}</p>
+                                <p>${item.description}</p>
+                            </div>
+                        </div>
+                    `).join('');
+                    resultsSection.style.display = 'block';
+                    overlay.classList.add('active');
+                    
+                    // 更新搜索统计
+                    document.getElementById('resultCount').textContent = 
+                        `显示全部 ${allResults.length} 个结果`;
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const username = localStorage.getItem('username');
+            const userDisplay = document.getElementById('userDisplay');
+            
+            if (username) {
+                userDisplay.textContent = `${username}`;
+                
+                // 初始化用户数据
+                initUserData(username);
+                
+                // 为下拉菜单项添加点击事件
+                document.querySelectorAll('.dropdown-item').forEach(item => {
+                    item.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        
+                        if (this.classList.contains('logout')) {
+                            handleLogout();
+                        } else {
+                            const action = this.querySelector('span').textContent;
+                            handleMenuAction(action, username);
+                        }
+                    });
+                });
+            }
+        });
+
+        // 初始化用户数据
+        function initUserData(username) {
+            if (!localStorage.getItem(`${username}_favorites`)) {
+                localStorage.setItem(`${username}_favorites`, JSON.stringify([]));
+            }
+            if (!localStorage.getItem(`${username}_history`)) {
+                localStorage.setItem(`${username}_history`, JSON.stringify([]));
+            }
+            if (!localStorage.getItem(`${username}_info`)) {
+                localStorage.setItem(`${username}_info`, JSON.stringify({
+                    nickname: username,
+                    avatar: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2U5ZWNlZiIvPjx0ZXh0IHg9IjUwIiB5PSI1MCIgZm9udC1zaXplPSIyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgYWxpZ25tZW50LWJhc2VsaW5lPSJtaWRkbGUiIGZpbGw9IiM2Yzc1N2QiPuWktOWDjzwvdGV4dD48L3N2Zz4=',
+                    email: '',
+                    description: ''
+                }));
+            }
+            
+            // 加载用户头像
+            const userInfo = JSON.parse(localStorage.getItem(`${username}_info`));
+            const userAvatar = document.querySelector('.user-avatar');
+            userAvatar.innerHTML = `<img src="${userInfo.avatar}" alt="用户头像">`;
+        }
+
+        // 处理菜单动作
+        function handleMenuAction(action, username) {
+            switch(action) {
+                case '个人信息':
+                    showProfileDialog(username);
+                    break;
+                case '我的收藏':
+                    showFavorites(username);
+                    break;
+                case '浏览历史':
+                    showHistory(username);
+                    break;
+            }
+        }
+
+        // 处理退出登录
+        function handleLogout() {
+            if (confirm('确定要退出登录吗？')) {
+                localStorage.removeItem('username');
+                window.location.href = 'login.html';
+            }
+        }
+
+        // 显示个人信息对话框
+        function showProfileDialog(username) {
+            const userInfo = JSON.parse(localStorage.getItem(`${username}_info`));
+            
+            const dialog = document.createElement('div');
+            dialog.className = 'modal-overlay';
+            dialog.innerHTML = `
+                <div class="modal-content">
+                    <h3>个人信息</h3>
+                    <form id="profileForm">
+                        <div class="avatar-upload">
+                            <div class="avatar-preview">
+                                <img src="${userInfo.avatar || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2U5ZWNlZiIvPjx0ZXh0IHg9IjUwIiB5PSI1MCIgZm9udC1zaXplPSIyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgYWxpZ25tZW50LWJhc2VsaW5lPSJtaWRkbGUiIGZpbGw9IiM2Yzc1N2QiPuWktOWDjzwvdGV4dD48L3N2Zz4='}" 
+                                    id="avatarPreview" alt="头像预览">
+                            </div>
+                            <label for="avatarInput" class="avatar-label">
+                                <span class="upload-icon">📷</span>
+                                <span>更换头像</span>
+                            </label>
+                            <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+                        </div>
+                        <div class="form-group">
+                            <label>昵称</label>
+                            <input type="text" id="nickname" value="${userInfo.nickname}" placeholder="设置昵称">
+                        </div>
+                        <div class="form-group">
+                            <label>邮箱</label>
+                            <input type="email" id="email" value="${userInfo.email}" placeholder="设置邮箱">
+                        </div>
+                        <div class="form-group">
+                            <label>个人简介</label>
+                            <textarea id="description" placeholder="写点什么吧...">${userInfo.description}</textarea>
+                        </div>
+                        <div class="button-group">
+                            <button type="submit" class="save-btn">保存</button>
+                            <button type="button" class="cancel-btn">取消</button>
+                        </div>
+                    </form>
+                </div>
+            `;
+            
+            document.body.appendChild(dialog);
+
+            // 头像上传预览
+            const avatarInput = dialog.querySelector('#avatarInput');
+            const avatarPreview = dialog.querySelector('#avatarPreview');
+            
+            avatarInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    if (file.size > 5 * 1024 * 1024) { // 5MB限制
+                        alert('图片大小不能超过5MB');
+                        return;
+                    }
+                    
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        avatarPreview.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            // 表单提交处理
+            document.getElementById('profileForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const updatedInfo = {
+                    nickname: document.getElementById('nickname').value,
+                    avatar: avatarPreview.src,
+                    email: document.getElementById('email').value,
+                    description: document.getElementById('description').value
+                };
+                handleProfileUpdate(username, updatedInfo);
+                dialog.remove();
+            });
+            
+            // 取消按钮处理
+            dialog.querySelector('.cancel-btn').addEventListener('click', () => dialog.remove());
+        }
+
+        // 修复用户信息更新可能的空值问题
+        function handleProfileUpdate(username, updatedInfo) {
+            if (!updatedInfo.nickname?.trim()) {
+                updatedInfo.nickname = username;
+            }
+            
+            try {
+                localStorage.setItem(`${username}_info`, JSON.stringify(updatedInfo));
+                
+                // 更新显示
+                const userAvatar = document.querySelector('.user-avatar');
+                const userDisplay = document.getElementById('userDisplay');
+                
+                if (userAvatar && updatedInfo.avatar) {
+                    userAvatar.innerHTML = `<img src="${updatedInfo.avatar}" alt="用户头像" onerror="this.src='默认头像URL'">`;
+                }
+                
+                if (userDisplay) {
+                    userDisplay.textContent = updatedInfo.nickname;
+                }
+            } catch (error) {
+                console.error('更新用户信息失败:', error);
+                alert('更新用户信息失败，请重试');
+            }
+        }
+
+        // 显示收藏列表
+        function showFavorites(username) {
+            const favorites = JSON.parse(localStorage.getItem(`${username}_favorites`)) || [];
+            showListDialog('我的收藏', favorites, username, 'favorites');
+        }
+
+        // 显示浏览历史
+        function showHistory(username) {
+            const history = JSON.parse(localStorage.getItem(`${username}_history`)) || [];
+            
+            const dialog = document.createElement('div');
+            dialog.className = 'modal-overlay';
+            dialog.innerHTML = `
+                <div class="modal-content">
+                    <h3>浏览历史</h3>
+                    <div class="list-container">
+                        ${history.length ? history.map(item => `
+                            <div class="list-item">
+                                <img src="${item.img}" alt="${item.name}">
+                                <div class="item-info">
+                                    <h4>${item.name}</h4>
+                                    <p>${item.description}</p>
+                                    <small class="view-time">浏览时间: ${item.viewTime}</small>
+                                </div>
+                            </div>
+                        `).join('') : '<p class="empty-message">暂无浏览记录</p>'}
+                    </div>
+                    <button class="close-btn">关闭</button>
+                </div>
+            `;
+            
+            document.body.appendChild(dialog);
+            
+            // 关闭按钮处理
+            dialog.querySelector('.close-btn').addEventListener('click', () => dialog.remove());
+        }
+
+        // 在搜索结果点击时记录浏览历史
+        document.addEventListener('click', function(e) {
+            const resultItem = e.target.closest('.result-item');
+            if (resultItem) {
+                const username = localStorage.getItem('username');
+                if (username) {
+                    const item = {
+                        name: resultItem.querySelector('h3').textContent,
+                        description: resultItem.querySelector('p').textContent,
+                        img: resultItem.querySelector('img').src
+                    };
+                    addToHistory(username, item);
+                }
+            }
+        });
+
+        // 在色项点击时记录浏览历史
+        document.querySelectorAll('.feature-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const username = localStorage.getItem('username');
+                if (username) {
+                    const historyItem = {
+                        name: this.querySelector('h3').textContent,
+                        description: this.querySelector('.main-desc').textContent,
+                        img: this.querySelector('img').src
+                    };
+                    addToHistory(username, historyItem);
+                }
+            });
+        });
+
+        // 替换原有的导航预览相关JavaScript代码
+        document.querySelectorAll('.sidebar nav ul li a').forEach(link => {
+            // 创建预览容器
+            const preview = document.createElement('div');
+            preview.className = 'nav-preview';
+            
+            // 获取页面名称
+            const pageName = link.getAttribute('href').replace('.html', '');
+            
+            // 设置预览内容
+            preview.innerHTML = `
+                <div class="preview-content">
+                    <img src="${getPreviewImage(pageName)}" alt="${pageName}预览" loading="lazy">
+                    <div class="preview-description">
+                        ${getPreviewDescription(pageName)}
+                    </div>
+                </div>
+            `;
+            
+            // 将预览添加到导航项
+            link.parentElement.appendChild(preview);
+        });
+
+        // 更新预览图片获取函数
+        function getPreviewImage(pageName) {
+            const previewImages = {
+                '首页': 'https://th.bing.com/th/id/OIP.pF6-l_FqPMjSr5RSuqfdcgHaFj?rs=1&pid=ImgDetMain',
+                '历史': 'https://www.molihua.net/data/attachment/forum/201210/03/2007179vuvnjf7kqvuf7n8.jpg',
+                '风景': 'https://p2.cri.cn/M00/35/91/rBABCWEQjbGAFxyDAAAAAAAAAAA077.900x600.jpg',
+                '特产': 'https://th.bing.com/th/id/R.b98ddadcbee2fc229d1f31058988becf?rik=oXyqGNX20MJ5UA&riu=http%3a%2f%2fhzswhg.org.cn%2fupload%2fimages%2f2022%2f6%2f9dbcae2f4f01f7fd.jpg&ehk=ENk0sZQNPGXN2yXoajoaYSpYCtj2KpDYh%2bX%2fwGfsrPE%3d&risl=&pid=ImgRaw&r=0',
+                '经济': 'https://n.sinaimg.cn/sinakd20110/0/w1024h576/20221123/3942-4394367281b15ac82c23ee430c1f1978.jpg',
+                '关于我们': 'https://th.bing.com/th/id/OIP.pF6-l_FqPMjSr5RSuqfdcgHaFj?rs=1&pid=ImgDetMain'
+            };
+            return previewImages[pageName] || '';
+        }
+
+        // 更新预览描述获取函数
+        function getPreviewDescription(pageName) {
+            const descriptions = {
+                '首页': '探索横州市的魅力，发现独特的文化与风景。',
+                '历史': '了解横州悠久的历史文化，感受千年古城的底蕴。',
+                '风景': '欣赏横州秀丽的自然风光，体验独特的人文景观。',
+                '特产': '品味横州特色美食与特产，感受地道的本土文化。',
+                '经济': '了解横州蓬勃发展的经济现状与未来展望。',
+                '关于我们': '认识我们的团队，了解网站的建设初衷。'
+            };
+            return descriptions[pageName] || '';
+        }
+
+        // 添加记录浏览历史的函数
+        function addToHistory(username, item) {
+            try {
+                if (!username || !item?.name) return;
+                
+                let history = JSON.parse(localStorage.getItem(`${username}_history`)) || [];
+                
+                // 检查是否已存在相同项目
+                const existingIndex = history.findIndex(x => x.name === item.name);
+                if (existingIndex !== -1) {
+                    // 如果存在，更新时间戳
+                    history[existingIndex].viewTime = new Date().toLocaleString();
+                    // 移动到顶部
+                    const updatedItem = history.splice(existingIndex, 1)[0];
+                    history.unshift(updatedItem);
+                } else {
+                    // 添加新记录
+                    history.unshift({
+                        ...item,
+                        viewTime: new Date().toLocaleString()
+                    });
+                }
+                
+                // 限制历史记录数量
+                history = history.slice(0, 20);
+                
+                localStorage.setItem(`${username}_history`, JSON.stringify(history));
+            } catch (error) {
+                console.error('添加浏览历史失败:', error);
+            }
+        }
+    </script>
+
+    <style>
+        /* 全局样式 */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: #dd741e;
+            line-height: 1.6;
+        }
+
+        /* 边导航栏 */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.97), rgba(67, 160, 71, 0.97));
+            overflow-x: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            padding-top: 60px;
+            z-index: 1000;
+            box-shadow: 5px 0 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .sidebar nav ul li {
+            padding: 0;
+            margin: 8px 15px;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.4s ease;
+        }
+
+        .sidebar.active nav ul li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .sidebar nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 17px;
+            padding: 15px 25px;
+            display: block;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+            padding-left: 30px;
+        }
+
+        /* 关闭按钮 */
+        .sidebar .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar .close-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: rotate(90deg);
+        }
+
+        /* 菜单按钮 */
+        .menu-btn {
+            font-size: 16px;
+            background: linear-gradient(145deg, #4CAF50, #43A047);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            z-index: 2000;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.25);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .menu-btn:hover {
+            background: linear-gradient(145deg, #43A047, #388E3C);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.35);
+        }
+
+        .menu-btn:active {
+            transform: translateY(1px);
+        }
+
+        /* 主体内容 */
+        .content {
+            padding: 20px;
+            margin-left: 30px;
+            transition: margin-left 0.3s ease;
+        }
+
+        header {
+            text-align: center;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)),
+                url('https://th.bing.com/th/id/R.0be26b308088dfa584f26ebd53972575?rik=aNkIbI4ZGB9uhg&riu=http%3a%2f%2fpic.weather.com.cn%2fimages%2fguangxi%2fphoto%2f2020%2f02%2f11%2f20200211170327B16771F30A11A1A9DC3114DB33809E6E.jpg&ehk=1yQKxtMv558AWn%2bvOUfdc59Ig55fo%2byWn8%2b9Ce8Uqtw%3d&risl=&pid=ImgRaw&r=0');
+            background-size: cover;
+            background-position: center;
+            padding: 60px 20px;
+            margin-bottom: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 42px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header p {
+            font-size: 20px;
+            color: #34495e;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* 轮播图区美化 */
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: 40px auto;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.2),
+                0 5px 15px rgba(0, 0, 0, 0.1);
+            background-color: transparent;
+            z-index: 1000;
+            transform: perspective(1000px);
+            transition: transform 0.4s ease;
+        }
+
+        .carousel:hover {
+            transform: perspective(1000px) translateY(-10px);
+        }
+
+        .carousel::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30%;
+            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .carousel-images {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .carousel-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+            object-fit: cover;
+            transform: scale(1.1);
+        }
+
+        .carousel-image[style*="opacity: 1"] {
+            transform: scale(1);
+        }
+
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #4CAF50;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-control:hover {
+            background: rgba(255, 255, 255, 1);
+            width: 55px;
+            height: 55px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .carousel-control.prev {
+            left: 20px;
+        }
+
+        .carousel-control.next {
+            right: 20px;
+        }
+
+        .carousel-control::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 50%;
+            transform: scale(0);
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-control:hover::before {
+            transform: scale(1.2);
+        }
+
+        /* 添加轮播图指示器 */
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            width: 25px;
+            border-radius: 5px;
+            background: #4CAF50;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .carousel {
+                border-radius: 15px;
+                margin: 20px auto;
+            }
+
+            .carousel-images {
+                height: 400px;
+            }
+
+            .carousel-control {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .carousel-control:hover {
+                width: 45px;
+                height: 45px;
+            }
+
+            .carousel-control.prev {
+                left: 10px;
+            }
+
+            .carousel-control.next {
+                right: 10px;
+            }
+        }
+
+        /* 特色项 */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 35px;
+            padding: 25px;
+            margin: 50px auto;
+            max-width: 1400px;
+        }
+
+        .feature-item {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.1),
+                0 1px 8px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            border: 1px solid rgba(76, 175, 80, 0.1);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.15),
+                0 5px 15px rgba(76, 175, 80, 0.1);
+        }
+
+        .feature-item a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .feature-image {
+            position: relative;
+            overflow: hidden;
+            height: 280px;
+        }
+
+        .feature-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .feature-item:hover .feature-image img {
+            transform: scale(1.12);
+        }
+
+        .feature-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(76, 175, 80, 0.85),
+                rgba(67, 160, 71, 0.95)
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .overlay-content {
+            text-align: center;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+
+        .feature-item:hover .feature-overlay {
+            opacity: 1;
+        }
+
+        .feature-item:hover .overlay-content {
+            transform: translateY(0);
+        }
+
+        .view-more {
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+            padding: 14px 28px;
+            border: 2px solid white;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .overlay-desc {
+            display: block;
+            color: white;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .feature-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .feature-icon {
+            font-size: 28px;
+            opacity: 0.9;
+        }
+
+        .feature-content {
+            padding: 28px;
+            background: linear-gradient(
+                to bottom,
+                white,
+                rgba(232, 245, 233, 0.3)
+            );
+        }
+
+        .feature-content h3 {
+            color: #2c3e50;
+            font-size: 26px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .feature-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(76, 175, 80, 0.1);
+        }
+
+        .feature-item:hover .tag {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .main-desc {
+            color: #546e7a;
+            margin-bottom: 22px;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .feature-highlights {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-highlights li {
+            color: #546e7a;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-highlights li:hover {
+            color: #2e7d32;
+            transform: translateX(5px);
+        }
+
+        .highlight-icon {
+            font-style: normal;
+            font-size: 18px;
+        }
+
+        .feature-footer {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(76, 175, 80, 0.1);
+            text-align: right;
+        }
+
+        .read-more {
+            color: #4CAF50;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover .read-more {
+            color: #2e7d32;
+            padding-right: 5px;
+        }
+
+        /* 响应式适配优化 */
+        @media (max-width: 768px) {
+            .features {
+                grid-template-columns: 1fr;
+                padding: 15px;
+                gap: 25px;
+            }
+
+            .feature-image {
+                height: 220px;
+            }
+
+            .feature-content {
+                padding: 22px;
+            }
+
+            .feature-header h3 {
+                font-size: 24px;
+            }
+
+            .view-more {
+                padding: 12px 24px;
+                font-size: 18px;
+            }
+        }
+
+        @media (hover: none) {
+            .feature-overlay {
+                opacity: 0.9;
+                background: linear-gradient(
+                    to bottom,
+                    rgba(76, 175, 80, 0.7),
+                    rgba(67, 160, 71, 0.8)
+                );
+            }
+            
+            .overlay-content {
+                transform: translateY(0);
+            }
+        }
+
+        /* 页脚 */
+        footer {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        footer p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* 应式设计 */
+        @media (max-width: 768px) {
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feature-item {
+                width: 90%;
+                margin-bottom: 20px;
+            }
+
+            .form-group input {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .carousel {
+                max-width: 100%;
+                height: auto;
+            }
+
+            .carousel-images {
+                width: 100%;
+                height: auto;
+            }
+
+            header {
+                font-size: 24px;
+                padding: 15px;
+            }
+
+            header p {
+                font-size: 16px;
+            }
+        }
+
+        /* 搜索区域样式优化 */
+        .search {
+            background: linear-gradient(165deg, #ffffff, #f8f9fa);
+            padding: 35px 40px;
+            border-radius: 30px;
+            box-shadow: 
+                20px 20px 60px #d1d9e6,
+                -20px -20px 60px #ffffff;
+            margin: 40px auto;
+            max-width: 920px;
+            position: relative;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .search-header {
+            margin-bottom: 20px;
+        }
+
+        .search-header h3 {
+            color: #2c3e50;
+            margin: 0 0 8px 0;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .search-tips {
+            color: #666;
+            font-size: 14px;
+            display: block;
+        }
+
+        .form-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .select-wrapper {
+            position: relative;
+            min-width: 160px;
+        }
+
+        .select-wrapper::after {
+            content: '▼';
+            font-size: 12px;
+            color: #4CAF50;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .form-group select {
+            width: 100%;
+            padding: 14px 40px 14px 20px;
+            border: 2px solid #e8eef3;
+            border-radius: 15px;
+            font-size: 15px;
+            color: #2c3e50;
+            background-color: white;
+            cursor: pointer;
+            appearance: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-group select:hover {
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.1);
+        }
+
+        .search-box {
+            flex: 1;
+            position: relative;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 20px;
+            border: 2px solid #e8eef3;
+            border-radius: 15px;
+            font-size: 15px;
+            color: #2c3e50;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:hover {
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.1);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.15);
+        }
+
+        .form-group button {
+            padding: 14px 30px;
+            background: linear-gradient(145deg, #4CAF50, #43A047);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .form-group button:hover {
+            background: linear-gradient(145deg, #43A047, #388E3C);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .search-icon {
+            font-size: 16px;
+        }
+
+        .quick-tags {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .quick-tags span {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .tag {
+            background: #f0f8f1;
+            border: 1px solid #4CAF50;
+            color: #4CAF50;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background: #4CAF50;
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .search-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .clear-btn {
+            background: none;
+            border: none;
+            color: #dc3545;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 5px 10px;
+            transition: all 0.3s ease;
+        }
+
+        .clear-btn:hover {
+            text-decoration: underline;
+            opacity: 0.8;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .search {
+                padding: 25px;
+                margin: 20px 15px;
+            }
+
+            .form-group {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .select-wrapper {
+                width: 100%;
+                min-width: unset;
+            }
+
+            .form-group select,
+            .form-group input,
+            .form-group button {
+                width: 100%;
+            }
+
+            .quick-tags {
+                justify-content: center;
+            }
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s;
+        }
+
+        .loading.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #4CAF50;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .category-tag {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+            margin: 8px 0;
+        }
+
+        /* 下拉选项样式 */
+        .form-group select option {
+            padding: 12px 20px;
+            font-size: 15px;
+            color: #2c3e50;
+            background-color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* 下拉选项悬浮状 */
+        .form-group select option:hover {
+            background-color: #e8f5e9;
+            color: #4CAF50;
+        }
+
+        /* 选中状态 */
+        .form-group select option:checked {
+            background: linear-gradient(145deg, #4CAF50, #43A047);
+            color: white;
+            font-weight: 500;
+        }
+
+        /* 下拉框展开时的样式 */
+        .form-group select:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.15);
+        }
+
+        /* 下拉框展开时的选项组样式 */
+        .form-group select:focus optgroup {
+            background-color: white;
+            padding: 8px 0;
+        }
+
+        /* 禁用状态 */
+        .form-group select option:disabled {
+            color: #999;
+            background-color: #f5f5f5;
+            cursor: not-allowed;
+        }
+
+        /* 选项分组样式 */
+        .form-group select optgroup {
+            font-weight: 600;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+            padding: 10px;
+        }
+
+        /* 分组中的选项样式 */
+        .form-group select optgroup option {
+            padding-left: 20px;
+            font-weight: normal;
+        }
+
+        /* 搜索结果区域样式优化 */
+        .results {
+            display: none;
+            width: 1200px;
+            max-height: 600px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            overflow-y: auto;
+            z-index: 1001;
+            padding: 30px;
+            top: calc(100% - 80px); /* 修改定位,位于搜索框下方 */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(76, 175, 80, 0.1);
+            animation: slideDown 0.3s ease-out;
+        }
+
+        .result-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            margin-bottom: 15px;
+            background-color: white;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(76, 175, 80, 0.1);
+        }
+
+        .result-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-img {
+            width: 180px;
+            height: 135px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-right: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .result-img:hover {
+            transform: scale(1.05);
+        }
+
+        .result-description {
+            flex: 1;
+        }
+
+        .result-description h3 {
+            color: #2c3e50;
+            font-size: 22px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .result-description p {
+            color: #546e7a;
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* 搜索区域容器样式 */
+        .search {
+            position: relative; /* 添加相对定位 */
+            /* ... 其他样式保持不变 ... */
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .results {
+                width: 90%;
+                padding: 20px;
+                max-height: 80vh;
+            }
+
+            .result-item {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
+            }
+
+            .result-img {
+                width: 100%;
+                height: 200px;
+                margin: 0 0 15px 0;
+            }
+
+            .result-description {
+                text-align: center;
+            }
+        }
+
+        /* 添加遮罩层 */
+        .search-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            backdrop-filter: blur(3px);
+        }
+
+        .search-overlay.active {
+            display: block;
+        }
+
+        /* 显示所有按钮样式 */
+        .show-all-btn {
+            padding: 14px 30px;
+            background: linear-gradient(145deg, #607D8B, #546E7A);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .show-all-btn:hover {
+            background: linear-gradient(145deg, #546E7A, #455A64);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(96, 125, 139, 0.3);
+        }
+
+        .show-all-icon {
+            font-size: 16px;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .form-group button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        .user-info {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 20px;
+            border-radius: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .user-info:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .user-avatar {
+            font-size: 20px;
+            color: #4CAF50;
+            transition: transform 0.3s ease;
+        }
+
+        .user-info:hover .user-avatar {
+            transform: scale(1.1);
+        }
+
+        #userDisplay {
+            color: #2c3e50;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        /* 下拉菜单样式 */
+        .user-dropdown {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            width: 200px;
+            padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .user-info:hover .user-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-item:hover {
+            background: #f5f5f5;
+            padding-left: 25px;
+        }
+
+        .item-icon {
+            font-size: 18px;
+            opacity: 0.8;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background: #eee;
+            margin: 8px 0;
+        }
+
+        .dropdown-item.logout {
+            color: #dc3545;
+        }
+
+        .dropdown-item.logout:hover {
+            background: #fff1f1;
+        }
+
+        /* 添加箭头指示器 */
+        .user-info::after {
+            content: '▼';
+            font-size: 12px;
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .user-info:hover::after {
+            transform: rotate(180deg);
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .user-info {
+                top: 10px;
+                right: 10px;
+                padding: 8px 15px;
+            }
+            
+            .user-dropdown {
+                width: 180px;
+            }
+        }
+
+        /* 添加新的样式 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-content h3 {
+            color: #2c3e50;
+            margin: 0 0 20px 0;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8f5e9;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e8f5e9;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+            outline: none;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+            margin-top: 25px;
+        }
+
+        .save-btn,
+        .cancel-btn {
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .save-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+        }
+
+        .save-btn:hover {
+            background: #43A047;
+            transform: translateY(-2px);
+        }
+
+        .cancel-btn {
+            background: #f5f5f5;
+            color: #666;
+            border: none;
+        }
+
+        .cancel-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .list-container {
+            margin: 20px 0;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+
+        .list-item:hover {
+            transform: translateX(5px);
+            background: #f0f4f8;
+        }
+
+        .list-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-info h4 {
+            margin: 0 0 5px 0;
+            color: #2c3e50;
+        }
+
+        .item-info p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #dc3545;
+            cursor: pointer;
+            padding: 5px;
+            font-size: 20px;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .remove-btn:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #666;
+            padding: 20px;
+            font-style: italic;
+        }
+
+        .close-btn {
+            width: 100%;
+            padding: 12px;
+            background: #f5f5f5;
+            border: none;
+            border-radius: 10px;
+            color: #666;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .close-btn:hover {
+            background: #e0e0e0;
+        }
+
+        /* 添加头像相关样式 */
+        .avatar-upload {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .avatar-preview {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 3px solid #4CAF50;
+        }
+
+        .avatar-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: #f0f4f8;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .avatar-label:hover {
+            background: #e8f5e9;
+            transform: translateY(-2px);
+        }
+
+        .upload-icon {
+            font-size: 20px;
+        }
+
+        /* 修改用户头像显示样式 */
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 调整用户信息区域样式 */
+        .user-info {
+            padding: 8px 16px;
+        }
+
+        /* 添加浏览历史相关样式 */
+        .view-time {
+            color: #666;
+            font-size: 12px;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .list-item {
+            display: flex;
+            padding: 15px;
+            border-radius: 8px;
+            background: #f8f9fa;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .list-item:hover {
+            transform: translateX(5px);
+            background: #f0f4f8;
+        }
+
+        .list-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-info h4 {
+            margin: 0 0 5px 0;
+            color: #2c3e50;
+        }
+
+        .item-info p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #666;
+            padding: 20px;
+            font-style: italic;
+        }
+
+        /* 导航预览样式 */
+        .nav-preview {
+            position: absolute;
+            left: calc(100% + 15px);
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2000; /* 提高层级确保显示在最上层 */
+        }
+
+        /* 确保预览内容不会溢出 */
+        .preview-content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* 为导航菜单添加平滑过渡效果 */
+        .nav-item {
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover {
+            transform: translateY(-2px);
+            color: #ff6b6b;
+        }
+    </style>
+
+    <script>
+        window.addEventListener('load', () => {
+            document.querySelector('.loading').classList.add('hide');
+        });
+    </script>
+
+    <script>
+        // 在 sidebar 的事件监听部分添加预览功能
+        document.querySelectorAll('.sidebar nav ul li').forEach(item => {
+            const link = item.querySelector('a');
+            const preview = item.querySelector('.nav-preview');
+            
+            // 鼠标进入导航项时显示预览
+            item.addEventListener('mouseenter', () => {
+                if (preview) {
+                    preview.style.opacity = '1';
+                    preview.style.visibility = 'visible';
+                }
+            });
+            
+            // 鼠标离开导航项时隐藏预览
+            item.addEventListener('mouseleave', () => {
+                if (preview) {
+                    preview.style.opacity = '0';
+                    preview.style.visibility = 'hidden';
+                }
+            });
+        });
+    </script>
+
+    <script>
+        // 修复搜索结果可能的显示问题
+        function displaySearchResults(results) {
+            const resultsSection = document.getElementById('results');
+            const overlay = document.querySelector('.search-overlay');
+            
+            if (!resultsSection) return;
+            
+            try {
+                if (!results || results.length === 0) {
+                    resultsSection.innerHTML = '<p class="empty-message">未找到相关内容</p>';
+                } else {
+                    resultsSection.innerHTML = results.map(item => `
+                        <div class="result-item">
+                            <img src="${item.img || '默认图片URL'}" alt="${item.name}" 
+                                 onerror="this.src='默认图片URL'">
+                            <div class="result-description">
+                                <h3>${item.name || '未知标题'}</h3>
+                                <p class="category-tag">${item.category || '未分类'}</p>
+                                <p>${item.description || '暂无描述'}</p>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+                
+                resultsSection.style.display = 'block';
+                if (overlay) overlay.classList.add('active');
+                
+                // 更新搜索统计
+                const resultCount = document.getElementById('resultCount');
+                if (resultCount) {
+                    resultCount.textContent = `找到 ${results.length} 个结果`;
+                }
+            } catch (error) {
+                console.error('显示搜索结果失败:', error);
+                resultsSection.innerHTML = '<p class="error-message">显示结果时发生错误</p>';
+            }
+        }
+    </script>
+
+    <script>
+    // 添加平滑滚动效果
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // 添加滚动显示动画
+    window.addEventListener('scroll', function() {
+        const elements = document.querySelectorAll('.animate-on-scroll');
+        elements.forEach(element => {
+            const position = element.getBoundingClientRect();
+            if(position.top < window.innerHeight) {
+                element.classList.add('visible');
+            }
+        });
+    });
+    </script>
+</body>
+
+</html>
